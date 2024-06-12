@@ -54,7 +54,7 @@ export const Employee = () => {
     } else {
       setListEmpty(false)
     }
-  }, [listEmployee.length])
+  }, [listEmployee])
 
   
 
