@@ -1,3 +1,3 @@
-export interface IGetEmployeeByIdDTO{
-  id : string
+export interface IGetEmployeeByIdDTO {
+	id: string;
 }

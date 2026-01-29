@@ -1,3 +1,3 @@
 export interface IGetUserByIdDTO {
-  id : string
+	id: string;
 }

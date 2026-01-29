@@ -1,3 +1,3 @@
-export interface IGetDiscountByIdDTO{
-  id: string
+export interface IGetDiscountByIdDTO {
+	id: string;
 }

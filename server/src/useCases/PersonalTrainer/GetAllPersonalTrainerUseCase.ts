@@ -1,37 +1,33 @@
 import { prismaClient } from "../../database/prismaClient";
 
-
-
-
 export class GetAllPersonalTrainerUseCase {
-  async handle(){
-    const data = await prismaClient.personalTrainer.findMany({
-      select: {
-        id: true,
-        value: true,
-        user:{
-          select:{
-            name: true,
-            email: true
-          }
-        }
-      }
-    })
+	async handle() {
+		const data = await prismaClient.personalTrainer.findMany({
+			select: {
+				id: true,
+				value: true,
+				user: {
+					select: {
+						name: true,
+						email: true,
+					},
+				},
+			},
+		});
 
-    if(!data){
-      throw new Error("listPersonalTrainer empty.")
-    }
+		if (!data) {
+			throw new Error("listPersonalTrainer empty.");
+		}
 
-    const listPersonalTrainer =  data.map((item)=>{
-      return{
-        id: item.id,
-        name: item.user.name,
-        email: item.user.email,
-        value: item.value
-      }
-    })
+		const listPersonalTrainer = data.map((item) => {
+			return {
+				id: item.id,
+				name: item.user.name,
+				email: item.user.email,
+				value: item.value,
+			};
+		});
 
-    return listPersonalTrainer;
-
-  }
+		return listPersonalTrainer;
+	}
 }

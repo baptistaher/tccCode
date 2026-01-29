@@ -1,42 +1,39 @@
-import { prismaClient } from '../../database/prismaClient'
-import { IGetPersonalTrainerByIdDTO } from './../../repositories/dto/PersonalTrainer/IGetPersonalTrainerByIdDTO'
+import { prismaClient } from "../../database/prismaClient";
+import { IGetPersonalTrainerByIdDTO } from "./../../repositories/dto/PersonalTrainer/IGetPersonalTrainerByIdDTO";
 
 export class GetPersonalTrainerByIdUseCase {
-  async handle({ id }: IGetPersonalTrainerByIdDTO) {
-    const personalTrainerData =
-      await prismaClient.personalTrainer.findUnique({
-        where: {
-          id,
-        },
-        select: {
-          user: {
-            select: {
-              name: true,
-              email: true,
-              birth: true,
-              cni: true,
-              nif: true,
-            },
-          },
-          value: true,
-        },
-      })
+	async handle({ id }: IGetPersonalTrainerByIdDTO) {
+		const personalTrainerData = await prismaClient.personalTrainer.findUnique({
+			where: {
+				id,
+			},
+			select: {
+				user: {
+					select: {
+						name: true,
+						email: true,
+						birth: true,
+						cni: true,
+						nif: true,
+					},
+				},
+				value: true,
+			},
+		});
 
-    if (!personalTrainerData) {
-      throw new Error('Personal Trainer list is empty')
-    }
+		if (!personalTrainerData) {
+			throw new Error("Personal Trainer list is empty");
+		}
 
-    const personalTrainer = {
-      name: personalTrainerData.user.name,
-      email: personalTrainerData.user.email,
-      birth: personalTrainerData.user.birth
-        .toISOString()
-        .slice(0, 10),
-      cni: personalTrainerData.user.cni,
-      nif: personalTrainerData.user.nif,
-      value: personalTrainerData.value,
-    }
+		const personalTrainer = {
+			name: personalTrainerData.user.name,
+			email: personalTrainerData.user.email,
+			birth: personalTrainerData.user.birth.toISOString().slice(0, 10),
+			cni: personalTrainerData.user.cni,
+			nif: personalTrainerData.user.nif,
+			value: personalTrainerData.value,
+		};
 
-    return personalTrainer
-  }
+		return personalTrainer;
+	}
 }

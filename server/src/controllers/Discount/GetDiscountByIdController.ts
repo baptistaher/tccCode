@@ -1,33 +1,26 @@
-import { Request, Response } from 'express'
-import { GetDiscountByIdUseCase } from '../../useCases/Discount/GetDiscountByIDUseCase'
+import { Request, Response } from "express";
+import { GetDiscountByIdUseCase } from "../../useCases/Discount/GetDiscountByIDUseCase";
 
 export class GetDiscountByIdController {
-  async handle(
-    request: Request,
-    response: Response,
-  ): Promise<Response> {
-    if (request.method !== 'GET') {
-      return response.status(405).json('Method not allowed')
-    }
+	async handle(request: Request, response: Response): Promise<Response> {
+		if (request.method !== "GET") {
+			return response.status(405).json("Method not allowed");
+		}
 
-    const {id} = request.params
+		const { id } = request.params;
 
-    const getDiscountByIdUseCase = new GetDiscountByIdUseCase();
+		const getDiscountByIdUseCase = new GetDiscountByIdUseCase();
 
-    try {
+		try {
+			const discountInfo = await getDiscountByIdUseCase.handle({ id });
 
-      const discountInfo = await getDiscountByIdUseCase.handle({id})
+			if (Object.keys(discountInfo).length === 0) {
+				return response.status(500).json("Discount don't Exist");
+			}
 
-
-      if(Object.keys(discountInfo).length ===0){
-        return response.status(500).json("Discount don't Exist")
-      }
-
-      return response.status(200).json(discountInfo);
-    } catch (error) {
-      return response
-        .status(500)
-        .json('Fail to Find discount by id')
-    }
-  }
+			return response.status(200).json(discountInfo);
+		} catch (error) {
+			return response.status(500).json("Fail to Find discount by id");
+		}
+	}
 }
