@@ -1,5 +1,5 @@
+import type { Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { Request, Response } from "express";
 import { CreateTrainingPlanUseCase } from "../../useCases/TrainingPlan/CreateTrainingPlanUseCase";
 
 export class CreateTrainingPlanController {

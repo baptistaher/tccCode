@@ -1,9 +1,9 @@
-import { EmailAlreadyExist } from "./../../repositories/implementations/EmailAlreadyExist";
-import { ICreateEmployeeDTO } from "./../../repositories/dto/Employee/ICreateEmployeeDTO";
-import { prismaClient } from "../../database/prismaClient";
-import { hash } from "bcryptjs";
 import { Roles } from "@prisma/client";
+import { hash } from "bcryptjs";
 import { Response } from "express";
+import { prismaClient } from "../../database/prismaClient";
+import type { ICreateEmployeeDTO } from "./../../repositories/dto/Employee/ICreateEmployeeDTO";
+import { EmailAlreadyExist } from "./../../repositories/implementations/EmailAlreadyExist";
 
 export class CreateEmployeeUseCase {
 	async handle({ name, email, phone, CNI, NIF, birth }: ICreateEmployeeDTO) {

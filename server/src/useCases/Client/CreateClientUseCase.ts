@@ -1,8 +1,8 @@
-import { ICreateClientDTO } from "./../../repositories/dto/Client/ICreateClientDTO";
-import { prismaClient } from "../../database/prismaClient";
-import { EmailAlreadyExist } from "../../repositories/implementations/EmailAlreadyExist";
-import { hash } from "bcryptjs";
 import { Roles } from "@prisma/client";
+import { hash } from "bcryptjs";
+import { prismaClient } from "../../database/prismaClient";
+import type { ICreateClientDTO } from "./../../repositories/dto/Client/ICreateClientDTO";
+import { EmailAlreadyExist } from "../../repositories/implementations/EmailAlreadyExist";
 
 export class CreateClientUseCase {
 	async handle({

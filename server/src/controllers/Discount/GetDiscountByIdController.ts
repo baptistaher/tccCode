@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import { GetDiscountByIdUseCase } from "../../useCases/Discount/GetDiscountByIDUseCase";
 
 export class GetDiscountByIdController {

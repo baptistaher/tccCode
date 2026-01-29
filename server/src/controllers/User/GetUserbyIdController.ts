@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import { GetUserbyIdUseCase } from "../../useCases/User/GetUserbyIdUseCase";
 
 export class GetUserByIdController {

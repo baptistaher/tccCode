@@ -1,7 +1,7 @@
-import { GetDiscountByIdController } from "./../../controllers/Discount/GetDiscountByIdController";
 import { Router } from "express";
 import { CreateDiscountController } from "../../controllers/Discount/CreateDiscountController";
 import { GetAllDiscountsController } from "../../controllers/Discount/GetAllDiscountController";
+import { GetDiscountByIdController } from "./../../controllers/Discount/GetDiscountByIdController";
 
 const discountRoutes = Router();
 

@@ -1,6 +1,6 @@
 import { Roles } from "@prisma/client";
 import { hash } from "bcryptjs";
-import { Request, Response, NextFunction } from "express";
+import type { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
 
 import { prismaClient } from "../../../database/prismaClient";

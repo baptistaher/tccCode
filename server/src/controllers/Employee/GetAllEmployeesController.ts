@@ -1,6 +1,6 @@
 import { Employee, prisma, Roles, Status } from "@prisma/client";
 
-import { NextFunction, Request, Response } from "express";
+import type { NextFunction, Request, Response } from "express";
 import { prismaClient } from "../../database/prismaClient";
 import { HttpError } from "../../models/http-error";
 import { GetAllEmployeesUseCase } from "../../useCases/Employee/GetAllEmployeeUseCase";

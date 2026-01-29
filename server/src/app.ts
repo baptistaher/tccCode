@@ -1,8 +1,11 @@
 import "reflect-metadata";
-import express, { Request, Response, NextFunction } from "express";
-
-import { HttpError } from "./models/http-error";
 import bodyParser from "body-parser";
+import express, {
+	type NextFunction,
+	type Request,
+	type Response,
+} from "express";
+import { HttpError } from "./models/http-error";
 // import { router } from '../../Routes'
 // import { userRouter } from '../../Routes/user'
 import { router } from "./routes";
