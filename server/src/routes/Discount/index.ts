@@ -1,22 +1,16 @@
-import { GetDiscountByIdController } from './../../controllers/Discount/GetDiscountByIdController';
+import { GetDiscountByIdController } from "./../../controllers/Discount/GetDiscountByIdController";
 import { Router } from "express";
-import { CreateDiscountController } from '../../controllers/Discount/CreateDiscountController';
-import { GetAllDiscountsController } from '../../controllers/Discount/GetAllDiscountController';
+import { CreateDiscountController } from "../../controllers/Discount/CreateDiscountController";
+import { GetAllDiscountsController } from "../../controllers/Discount/GetAllDiscountController";
 
+const discountRoutes = Router();
 
+const createDiscount = new CreateDiscountController();
+const getAllDiscount = new GetAllDiscountsController();
+const getDiscountById = new GetDiscountByIdController();
 
+discountRoutes.post("/", createDiscount.handle);
+discountRoutes.get("/", getAllDiscount.handle);
+discountRoutes.get("/:id", getDiscountById.handle);
 
-const discountRoutes = Router()
-
-
-
-const createDiscount = new CreateDiscountController()
-const getAllDiscount = new GetAllDiscountsController()
-const getDiscountById = new GetDiscountByIdController()
-
-discountRoutes.post('/',createDiscount.handle)
-discountRoutes.get('/',getAllDiscount.handle)
-discountRoutes.get('/:id', getDiscountById.handle)
-
-
-export {discountRoutes}
+export { discountRoutes };

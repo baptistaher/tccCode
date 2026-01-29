@@ -1,14 +1,13 @@
 {
-  "compilerOptions": {
-    "sourceMap": true,
-    "outDir": "dist/js",
-    "strict": true,
-    "lib": ["esnext"],
-    "esModuleInterop": true,
-
-  },
-  "typedocOptions":{
-    "entryPoints": ["src/server.ts"],
-    "out": "docs"
-  }
+	"compilerOptions": {
+		"sourceMap": true,
+		"outDir": "dist/js",
+		"strict": true,
+		"lib": ["esnext"],
+		"esModuleInterop": true
+	},
+	"typedocOptions": {
+		"entryPoints": ["src/server.ts"],
+		"out": "docs"
+	}
 }

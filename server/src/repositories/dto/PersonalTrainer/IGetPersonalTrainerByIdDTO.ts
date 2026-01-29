@@ -1,3 +1,3 @@
-export interface IGetPersonalTrainerByIdDTO{
-  id: string
+export interface IGetPersonalTrainerByIdDTO {
+	id: string;
 }

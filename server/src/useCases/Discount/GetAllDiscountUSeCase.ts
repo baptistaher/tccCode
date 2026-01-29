@@ -1,19 +1,15 @@
 import { prismaClient } from "../../database/prismaClient";
 
-
-
 export class GetAllDiscountUseCase {
-  async handle(){
+	async handle() {
+		const listDiscount = await prismaClient.discount.findMany({
+			select: {
+				id: true,
+				name: true,
+				value: true,
+			},
+		});
 
-    const listDiscount = await prismaClient.discount.findMany({
-      select:{
-        id: true,
-        name: true,
-        value: true
-      }
-    })
-
-
-    return listDiscount
-  }
+		return listDiscount;
+	}
 }

@@ -1,3 +1,3 @@
-export interface IGetClientByIdDTO{
-  id: string
+export interface IGetClientByIdDTO {
+	id: string;
 }

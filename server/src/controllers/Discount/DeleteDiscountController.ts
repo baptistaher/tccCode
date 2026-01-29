@@ -1,20 +1,3 @@
-
-
-
-
-
 export class DeleteDiscountController {
-  async handle(){
-
-  }
+	async handle() {}
 }
-
-
-
-
-
-
-
-
-
-

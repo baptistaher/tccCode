@@ -1,9 +1,3 @@
-
-
-
-
 export class DeleteDiscountUseCase {
-  async handle(){
-    
-  }
+	async handle() {}
 }

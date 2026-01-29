@@ -1,4 +1,3 @@
-
-export interface IGetTrainingPlanByIdDTO{
-  id: string
+export interface IGetTrainingPlanByIdDTO {
+	id: string;
 }

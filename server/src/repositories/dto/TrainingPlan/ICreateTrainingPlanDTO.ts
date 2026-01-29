@@ -1,5 +1,5 @@
 export interface ICreateTrainingPlanDTO {
-  name: string
-  description: string
-  value: number
+	name: string;
+	description: string;
+	value: number;
 }

@@ -1,33 +1,28 @@
 // import { GetPersonalTrainerByIdController } from './GetPersonalTrainerByIdController';
-import { Request, Response, NextFunction } from 'express'
+import { Request, Response, NextFunction } from "express";
 
-import { prismaClient } from '../../database/prismaClient'
-import { HttpError } from '../../models/http-error'
-import { GetPersonalTrainerByIdUseCase } from '../../useCases/PersonalTrainer/GetPersonalTrainerByIdUseCase'
+import { prismaClient } from "../../database/prismaClient";
+import { HttpError } from "../../models/http-error";
+import { GetPersonalTrainerByIdUseCase } from "../../useCases/PersonalTrainer/GetPersonalTrainerByIdUseCase";
 
 export class GetPersonalTrainerByIdController {
-  async handle(request: Request, response: Response) {
-    if (request.method !== 'GET') {
-      return response.status(405).json('Method not allowed')
-    }
+	async handle(request: Request, response: Response) {
+		if (request.method !== "GET") {
+			return response.status(405).json("Method not allowed");
+		}
 
-    const { id } = request.params
+		const { id } = request.params;
 
-    const getPersonalTrainerByIdUseCase =
-      new GetPersonalTrainerByIdUseCase()
-    try {
-      const selectedPersonalTrainer =
-        await getPersonalTrainerByIdUseCase.handle({ id })
+		const getPersonalTrainerByIdUseCase = new GetPersonalTrainerByIdUseCase();
+		try {
+			const selectedPersonalTrainer =
+				await getPersonalTrainerByIdUseCase.handle({ id });
 
-
-
-        return response.status(200).json(selectedPersonalTrainer)
-    } catch (error) {
-      return response
-        .status(500)
-        .json('Fail to Find Personal Trainer by Id')
-    }
-  }
+			return response.status(200).json(selectedPersonalTrainer);
+		} catch (error) {
+			return response.status(500).json("Fail to Find Personal Trainer by Id");
+		}
+	}
 }
 
 // export const GetPersonalTrainerByIdController = async (

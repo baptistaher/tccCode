@@ -1,31 +1,31 @@
-import { prismaClient } from '../../database/prismaClient'
+import { prismaClient } from "../../database/prismaClient";
 
 export class GetAllEmployeesUseCase {
-  async handle() {
-    const data = await prismaClient.employee.findMany({
-      select: {
-        id: true,
-        status: true,
-        user: {
-          select: {
-            name: true,
-            email: true,
-            phone: true,
-          },
-        },
-      },
-    })
+	async handle() {
+		const data = await prismaClient.employee.findMany({
+			select: {
+				id: true,
+				status: true,
+				user: {
+					select: {
+						name: true,
+						email: true,
+						phone: true,
+					},
+				},
+			},
+		});
 
-    const employee =  data.map((item) => {
-      return {
-        id: item.id,
-        status: item.status,
-        name: item.user.name,
-        email: item.user.email,
-        phone: item.user.phone,
-      }
-    })
+		const employee = data.map((item) => {
+			return {
+				id: item.id,
+				status: item.status,
+				name: item.user.name,
+				email: item.user.email,
+				phone: item.user.phone,
+			};
+		});
 
-    return employee
-  }
+		return employee;
+	}
 }

@@ -1,5 +1,5 @@
-export interface ICreateDiscountDTO{
-  name: string
-  description: string
-  value: number
+export interface ICreateDiscountDTO {
+	name: string;
+	description: string;
+	value: number;
 }
