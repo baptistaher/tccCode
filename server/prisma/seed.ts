@@ -1,15 +1,16 @@
-import { employees } from "./dataTest/employee";
-import { PrismaClient, Roles } from "@prisma/client";
-import { prismaClient } from "../src/database/prismaClient";
-import { discounts } from "./dataTest/discount";
-import { trainingPlans } from "./dataTest/trainingPlan";
-import { personalTrainers } from "./dataTest/personalTrainer";
-import { manager } from "./dataTest/manager";
-import { clients } from "./dataTest/client";
+import { Roles } from "@prisma/client";
 import { hash } from "bcryptjs";
+import { prisma } from "../src/database/prismaClient";
+import { clients } from "./dataTest/client";
+import { discounts } from "./dataTest/discount";
+import { employees } from "./dataTest/employee";
+import { manager } from "./dataTest/manager";
+import { personalTrainers } from "./dataTest/personalTrainer";
+import { trainingPlans } from "./dataTest/trainingPlan";
+
 // import random
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 async function runSeed() {
 	// Employee
@@ -17,7 +18,7 @@ async function runSeed() {
 	const hashedPassword = await hash("123456", 12);
 	await Promise.all(
 		employees.map(async (employee) => {
-			await prismaClient.user.create({
+			await prisma.user.create({
 				data: {
 					name: employee.name,
 					email: employee.email,
@@ -38,7 +39,7 @@ async function runSeed() {
 	// Discount
 	await Promise.all(
 		discounts.map(async (discount) => {
-			await prismaClient.discount.create({
+			await prisma.discount.create({
 				data: {
 					name: discount.name,
 					description: discount.description,
@@ -51,7 +52,7 @@ async function runSeed() {
 	// Training plan
 	await Promise.all(
 		trainingPlans.map(async (trainPlan) => {
-			await prismaClient.training_plan.create({
+			await prisma.training_plan.create({
 				data: {
 					name: trainPlan.name,
 					description: trainPlan.description,
@@ -64,7 +65,7 @@ async function runSeed() {
 	// PersonalTrainer
 	await Promise.all(
 		personalTrainers.map(async (personalTrainer) => {
-			await prismaClient.user.create({
+			await prisma.user.create({
 				data: {
 					name: personalTrainer.name,
 					email: personalTrainer.email,
@@ -86,7 +87,7 @@ async function runSeed() {
 
 	// manager
 	// await Promise
-	await prismaClient.user.create({
+	await prisma.user.create({
 		data: {
 			name: manager.name,
 			email: manager.email,
@@ -102,19 +103,19 @@ async function runSeed() {
 		},
 	});
 
-	const listTrainingPLans = await prismaClient.training_plan.findMany({
+	const listTrainingPLans = await prisma.training_plan.findMany({
 		select: {
 			id: true,
 		},
 	});
 
-	const listDiscounts = await prismaClient.discount.findMany({
+	const listDiscounts = await prisma.discount.findMany({
 		select: {
 			id: true,
 		},
 	});
 
-	const listPersonalTrainer = await prismaClient.personalTrainer.findMany({
+	const listPersonalTrainer = await prisma.personalTrainer.findMany({
 		select: {
 			id: true,
 		},
@@ -122,7 +123,7 @@ async function runSeed() {
 
 	await Promise.all(
 		clients.map(async (client) => {
-			await prismaClient.user.create({
+			await prisma.user.create({
 				data: {
 					name: client.name,
 					email: client.email,

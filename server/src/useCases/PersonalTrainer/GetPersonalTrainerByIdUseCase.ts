@@ -1,5 +1,5 @@
 import { prismaClient } from "../../database/prismaClient";
-import { IGetPersonalTrainerByIdDTO } from "./../../repositories/dto/PersonalTrainer/IGetPersonalTrainerByIdDTO";
+import type { IGetPersonalTrainerByIdDTO } from "./../../repositories/dto/PersonalTrainer/IGetPersonalTrainerByIdDTO";
 
 export class GetPersonalTrainerByIdUseCase {
 	async handle({ id }: IGetPersonalTrainerByIdDTO) {

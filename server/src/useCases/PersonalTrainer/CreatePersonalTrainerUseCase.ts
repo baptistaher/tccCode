@@ -1,6 +1,6 @@
 import { hash } from "bcryptjs";
 import { prismaClient } from "../../database/prismaClient";
-import { ICreatePersonalTrainerDTO } from "./../../repositories/dto/PersonalTrainer/ICreatePersonalTrainerDTO";
+import type { ICreatePersonalTrainerDTO } from "./../../repositories/dto/PersonalTrainer/ICreatePersonalTrainerDTO";
 
 export class CreatePersonalTrainerUseCase {
 	async handle({

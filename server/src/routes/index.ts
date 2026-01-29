@@ -3,11 +3,11 @@ import { Router } from "express";
 import { clientRoutes } from "./Client";
 import { discountRoutes } from "./Discount";
 import { employeeRoutes } from "./Employee";
+import { managerRoutes } from "./manager";
 import { paymentRoutes } from "./Payment";
 import { personalTrainerRoutes } from "./PersonalTrainer";
 import { trainingPlanRoutes } from "./TrainingPlan";
 import { userRouter } from "./user";
-import { managerRoutes } from "./manager";
 
 const router = Router();
 

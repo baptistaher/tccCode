@@ -1,5 +1,5 @@
 import { prismaClient } from "../../database/prismaClient";
-import { ICreateTrainingPlanDTO } from "../../repositories/dto/TrainingPlan/ICreateTrainingPlanDTO";
+import type { ICreateTrainingPlanDTO } from "../../repositories/dto/TrainingPlan/ICreateTrainingPlanDTO";
 
 export class CreateTrainingPlanUseCase {
 	async handle({ name, description, value }: ICreateTrainingPlanDTO) {

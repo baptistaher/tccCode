@@ -1,5 +1,5 @@
-import { IGetDiscountByIdDTO } from "./../../repositories/dto/Discount/IGetDiscountByIdDTO";
 import { prismaClient } from "../../database/prismaClient";
+import type { IGetDiscountByIdDTO } from "./../../repositories/dto/Discount/IGetDiscountByIdDTO";
 
 export class GetDiscountByIdUseCase {
 	async handle({ id }: IGetDiscountByIdDTO) {

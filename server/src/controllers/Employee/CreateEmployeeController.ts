@@ -1,6 +1,5 @@
+import { NextFunction, type Request, type Response } from "express";
 import { validationResult } from "express-validator";
-
-import { Request, Response, NextFunction } from "express";
 
 import { CreateEmployeeUseCase } from "../../useCases/Employee/CreateEmployeeUseCase";
 // import

@@ -1,5 +1,5 @@
-import { ICreateDiscountDTO } from "./../../repositories/dto/Discount/ICreateDiscountDTO";
 import { prismaClient } from "../../database/prismaClient";
+import type { ICreateDiscountDTO } from "./../../repositories/dto/Discount/ICreateDiscountDTO";
 
 export class CreateDiscountUseCase {
 	async handle({ name, description, value }: ICreateDiscountDTO) {

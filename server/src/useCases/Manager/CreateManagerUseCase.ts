@@ -1,7 +1,7 @@
 import { Roles } from "@prisma/client";
 import { hash } from "bcryptjs";
 import { prismaClient } from "../../database/prismaClient";
-import { ICreateManagerDTO } from "../../repositories/dto/Manager/ICreateManagerDTO";
+import type { ICreateManagerDTO } from "../../repositories/dto/Manager/ICreateManagerDTO";
 import { EmailAlreadyExist } from "../../repositories/implementations/EmailAlreadyExist";
 
 export class CreateManagerUseCase {

@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import type { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
 import { HttpError } from "../../models/http-error";
 import { CreatePersonalTrainerUseCase } from "../../useCases/PersonalTrainer/CreatePersonalTrainerUseCase";

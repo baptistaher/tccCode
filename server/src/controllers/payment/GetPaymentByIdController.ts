@@ -1,4 +1,4 @@
-import { Response, Request } from "express";
+import type { Request, Response } from "express";
 import { GetPaymentByIdUseCase } from "../../useCases/Payment/GetPaymentByIdUseCase";
 
 export class GetPaymentByIdController {

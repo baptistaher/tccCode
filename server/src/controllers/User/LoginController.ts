@@ -1,11 +1,10 @@
-import { NextFunction, Request, Response } from "express";
 import { compare } from "bcryptjs";
-
-import { prismaClient } from "../../database/prismaClient";
-import { HttpError } from "../../models/http-error";
+import { NextFunction, type Request, type Response } from "express";
 import { sign } from "jsonwebtoken";
-import { LoginUseCase } from "../../useCases/User/LoginUseCase";
+import { prisma } from "../../database/prismaClient";
+import { HttpError } from "../../models/http-error";
 import { GenerateTokenProvider } from "../../provider/GenerateTokenProvider";
+import { LoginUseCase } from "../../useCases/User/LoginUseCase";
 
 const authConfig = require("../../config/auth.json");
 

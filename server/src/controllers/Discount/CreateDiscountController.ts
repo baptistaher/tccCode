@@ -1,6 +1,5 @@
+import type { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
-
-import { Request, Response, NextFunction } from "express";
 import { prismaClient } from "../../database/prismaClient";
 import { HttpError } from "../../models/http-error";
 import { CreateDiscountUseCase } from "../../useCases/Discount/CreateDiscountUseCase";

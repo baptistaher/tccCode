@@ -1,5 +1,5 @@
-import { RefreshTokenUserController } from "./../../controllers/token/RefreshTokenUserController";
 import express from "express";
+import { RefreshTokenUserController } from "./../../controllers/token/RefreshTokenUserController";
 import { LoginController } from "../../controllers/User/LoginController";
 
 const authRouter = express.Router();
