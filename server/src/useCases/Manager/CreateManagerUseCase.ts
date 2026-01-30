@@ -1,6 +1,6 @@
 import { Roles } from "@prisma/client";
 import { hash } from "bcryptjs";
-import { prismaClient } from "../../database/prismaClient";
+import { prisma } from "../../database/prismaClient";
 import type { ICreateManagerDTO } from "../../repositories/dto/Manager/ICreateManagerDTO";
 import { EmailAlreadyExist } from "../../repositories/implementations/EmailAlreadyExist";
 
@@ -16,7 +16,7 @@ export class CreateManagerUseCase {
 
 		const hashedPassword = await hash("123456", 12);
 
-		const manager = await prismaClient.user.create({
+		const manager = await prisma.user.create({
 			data: {
 				name,
 				email,

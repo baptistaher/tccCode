@@ -1,5 +1,5 @@
 import { hash } from "bcryptjs";
-import { prismaClient } from "../../database/prismaClient";
+import { prisma } from "../../database/prismaClient";
 import type { ICreatePersonalTrainerDTO } from "./../../repositories/dto/PersonalTrainer/ICreatePersonalTrainerDTO";
 
 export class CreatePersonalTrainerUseCase {
@@ -12,7 +12,7 @@ export class CreatePersonalTrainerUseCase {
 		birth,
 		value,
 	}: ICreatePersonalTrainerDTO) {
-		const emailAlreadyExists = await prismaClient.user.findFirst({
+		const emailAlreadyExists = await prisma.user.findFirst({
 			where: {
 				email,
 			},
@@ -24,7 +24,7 @@ export class CreatePersonalTrainerUseCase {
 
 		const hashedPassword = await hash("123456", 12);
 
-		const personalTrainer = await prismaClient.user.create({
+		const personalTrainer = await prisma.user.create({
 			data: {
 				name,
 				email,

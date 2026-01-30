@@ -7,9 +7,10 @@
 		"test": "jest",
 		"start": "node  ./src/server.ts",
 		"dev": "ts-node-dev  --respawn --transpile-only --exit-child --watch  src ./src/server.ts",
+		"dev:nodemon": "nodemon --exec ts-node ./src/server.ts",
 		"prisma:migrate:dev": "npx prisma migrate dev",
 		"prisma:migrate:reset": "npx prisma migrate reset",
-		"prisma:db:seed": "npx prisma db seed ",
+		"prisma:db:seed": "npx prisma db seed",
 		"format:write": "npx @biomejs/biome check --write"
 	},
 	"prisma": {
@@ -29,6 +30,7 @@
 		"express": "^5.2.1",
 		"express-validator": "^7.3.1",
 		"jsonwebtoken": "^9.0.3",
+		"nodemon": "^3.1.11",
 		"pg": "^8.17.2",
 		"reflect-metadata": "^0.2.2",
 		"ts-node-dev": "^2.0.0",

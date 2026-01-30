@@ -1,9 +1,9 @@
-import { prismaClient } from "../../database/prismaClient";
+import { prisma } from "../../database/prismaClient";
 import type { IGetDiscountByIdDTO } from "./../../repositories/dto/Discount/IGetDiscountByIdDTO";
 
 export class GetDiscountByIdUseCase {
 	async handle({ id }: IGetDiscountByIdDTO) {
-		const discountExist = await prismaClient.discount.findUnique({
+		const discountExist = await prisma.discount.findUnique({
 			where: {
 				id,
 			},
