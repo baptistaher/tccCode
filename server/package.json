@@ -10,8 +10,7 @@
 		"prisma:migrate:dev": "npx prisma migrate dev",
 		"prisma:migrate:reset": "npx prisma migrate reset",
 		"prisma:db:seed": "npx prisma db seed ",
-		"format:write": "npx @biomejs/biome format --write",
-		"format:check": "npx @biomejs/biome format --check"
+		"format:write": "npx @biomejs/biome check --write"
 	},
 	"prisma": {
 		"seed": "ts-node-dev prisma/seed.ts "
@@ -32,7 +31,8 @@
 		"jsonwebtoken": "^9.0.3",
 		"pg": "^8.17.2",
 		"reflect-metadata": "^0.2.2",
-		"ts-node-dev": "^2.0.0"
+		"ts-node-dev": "^2.0.0",
+		"zod": "^4.3.6"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^2.3.13",
