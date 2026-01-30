@@ -1,26 +1,11 @@
-# FROM node:lts-alpine
-# FROM node:18.1.0
-FROM node:18-alpine3.18
-
-RUN apk add --no-cache bash
+FROM node:24.0.0-slim
 
 
-
-WORKDIR /app
-
+USER node
 
 
-COPY package.json ./
+WORKDIR /home/node/app
 
-COPY prisma ./prisma/
-
-
-
-COPY tsconfig.json ./
-
-COPY . .
+CMD [ "tail", "-f", "/dev/null" ]
 
 
-# EXPOSE 5000
-
-# CMD ["npm","run","dev"]

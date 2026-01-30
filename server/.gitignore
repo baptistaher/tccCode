@@ -1,6 +1,9 @@
 /node_modules
 .env
 
+
+
+.docker/postgres
 # package-lock.json
 
 generated

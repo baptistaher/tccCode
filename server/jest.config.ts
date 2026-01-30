@@ -194,4 +194,5 @@ export default {
 	// watchman: true,
 
 	clearMocks: true,
+	logHeapUsage: true,
 };
