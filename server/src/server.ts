@@ -1,3 +1,6 @@
 import { app } from "./app";
+import { Config } from "./config/config";
 
-app.listen(5000, () => console.log("server is running on port 5000"));
+app.listen(Config.api.API_PORT, () =>
+	console.log(`server is running on port ${Config.api.API_PORT}`),
+);
