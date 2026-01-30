@@ -5,8 +5,7 @@ on:
 
 jobs:
   server-format-check:
-    runs-on: 
-       group: ubuntu-latest
+    runs-on:  ubuntu-latest 
     defaults:
       run:
         working-directory: server
