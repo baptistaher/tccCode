@@ -19,5 +19,5 @@ jobs:
           node-version: 22
           cache: 'npm'
           # cache-dependency-path: server/package-lock.json
-      - run: npm ci
-      - run: npm run format:write
+      - run: npm install
+      - run: npx biome check .
