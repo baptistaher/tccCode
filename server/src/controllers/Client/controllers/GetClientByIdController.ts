@@ -1,12 +1,8 @@
-import type { NextFunction, Request, Response } from "express";
+import type { Request, Response } from "express";
 import { GetClientByIdUseCase } from "../../../useCases/Client/GetClientByIdUseCase";
 
 export class GetClientByIdController {
-	async handle(
-		request: Request,
-		response: Response,
-		next: NextFunction,
-	): Promise<Response> {
+	async handle(request: Request, response: Response): Promise<Response> {
 		if (request.method !== "GET") {
 			// const error = new HttpError('Method not allowed', 405)
 			// return next(error)
@@ -18,7 +14,9 @@ export class GetClientByIdController {
 		const getClientByIdUseCase = new GetClientByIdUseCase();
 
 		try {
-			const listClients = await getClientByIdUseCase.handle({ id });
+			const listClients = await getClientByIdUseCase.handle({
+				id: Array.isArray(id) ? id[0] : id,
+			});
 
 			if (Object.keys(listClients).length === 0) {
 				return response.status(500).json("Client don't Exist");
@@ -26,6 +24,7 @@ export class GetClientByIdController {
 
 			return response.status(200).json(listClients);
 		} catch (e) {
+			console.error(e);
 			return response.status(500).json("Fail to Find Client by Id");
 		}
 

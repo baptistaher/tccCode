@@ -1,9 +1,7 @@
 import { Roles } from "@prisma/client";
 import { hash } from "bcryptjs";
-import { Response } from "express";
-import { prismaClient } from "../../database/prismaClient";
+import { prisma } from "../../database/prismaClient";
 import type { ICreateEmployeeDTO } from "./../../repositories/dto/Employee/ICreateEmployeeDTO";
-import { EmailAlreadyExist } from "./../../repositories/implementations/EmailAlreadyExist";
 
 export class CreateEmployeeUseCase {
 	async handle({ name, email, phone, CNI, NIF, birth }: ICreateEmployeeDTO) {
@@ -17,7 +15,7 @@ export class CreateEmployeeUseCase {
 
 		const hashedPassword = await hash("123456", 12);
 
-		const newEmployee = await prismaClient.user.create({
+		const newEmployee = await prisma.user.create({
 			data: {
 				name,
 				email,

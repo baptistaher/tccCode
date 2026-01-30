@@ -1,28 +1,24 @@
-import { compare } from "bcryptjs";
-import { NextFunction, type Request, type Response } from "express";
-import { sign } from "jsonwebtoken";
-import { prisma } from "../../database/prismaClient";
-import { HttpError } from "../../models/http-error";
-import { GenerateTokenProvider } from "../../provider/GenerateTokenProvider";
+import type { Request, Response } from "express";
 import { LoginUseCase } from "../../useCases/User/LoginUseCase";
 
-const authConfig = require("../../config/auth.json");
+// const authConfig = require("../../config/auth.json");
 
 export class LoginController {
 	async handle(request: Request, response: Response): Promise<Response> {
 		const { email, password } = request.body;
 
 		const loginUseCase = new LoginUseCase();
-		let token;
+		// let token;
 
 		try {
-			token = await loginUseCase.execute({
+			const token = await loginUseCase.execute({
 				email,
 				password,
 			});
 
 			return response.json(token);
 		} catch (e) {
+			console.error(e);
 			return response.status(500).json("NO internet");
 			//   const error = new HttpError('No internet connection',500)
 			//  return next(error)

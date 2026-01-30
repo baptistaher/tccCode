@@ -1,6 +1,6 @@
 import { Roles } from "@prisma/client";
 import { hash } from "bcryptjs";
-import { prismaClient } from "../../database/prismaClient";
+import { prisma } from "../../database/prismaClient";
 import type { ICreateClientDTO } from "./../../repositories/dto/Client/ICreateClientDTO";
 import { EmailAlreadyExist } from "../../repositories/implementations/EmailAlreadyExist";
 
@@ -24,7 +24,7 @@ export class CreateClientUseCase {
 
 		const hashedPassword = await hash("123456", 12);
 
-		const newClient = await prismaClient.user.create({
+		const newClient = await prisma.user.create({
 			data: {
 				name,
 				email,

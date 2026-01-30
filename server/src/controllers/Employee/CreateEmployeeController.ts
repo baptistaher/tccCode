@@ -1,4 +1,4 @@
-import { NextFunction, type Request, type Response } from "express";
+import type { Request, Response } from "express";
 import { validationResult } from "express-validator";
 
 import { CreateEmployeeUseCase } from "../../useCases/Employee/CreateEmployeeUseCase";
@@ -11,6 +11,8 @@ export class CreateEmployeeController {
 		}
 
 		const errors = validationResult(request);
+
+		console.log(errors);
 
 		// if (!errors.isEmpty()) {
 
@@ -60,6 +62,7 @@ export class CreateEmployeeController {
 
 			return response.status(201).json(newEmployee);
 		} catch (e) {
+			console.error(e);
 			// const error = new HttpError("Couldn't register the Employee",500)
 			//  next(error)
 			return response.status(500).json("Couldn't register the Employee");

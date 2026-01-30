@@ -1,5 +1,3 @@
-import { PrismaClient } from "@prisma/client";
-import dayjs from "dayjs";
 import { sign } from "jsonwebtoken";
 
 const authConfig = require("../config/auth.json");

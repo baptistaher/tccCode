@@ -12,7 +12,9 @@ export class GetDiscountByIdController {
 		const getDiscountByIdUseCase = new GetDiscountByIdUseCase();
 
 		try {
-			const discountInfo = await getDiscountByIdUseCase.handle({ id });
+			const discountInfo = await getDiscountByIdUseCase.handle({
+				id: Array.isArray(id) ? id[0] : id,
+			});
 
 			if (Object.keys(discountInfo).length === 0) {
 				return response.status(500).json("Discount don't Exist");
@@ -20,6 +22,7 @@ export class GetDiscountByIdController {
 
 			return response.status(200).json(discountInfo);
 		} catch (error) {
+			console.error(error);
 			return response.status(500).json("Fail to Find discount by id");
 		}
 	}

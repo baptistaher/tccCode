@@ -1,5 +1,3 @@
-import { IsEmailOptions } from "express-validator/src/options";
-
 export interface ICreatePersonalTrainerDTO {
 	name: string;
 	email: string;

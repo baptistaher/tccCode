@@ -1,7 +1,7 @@
 const NodeEnviroment = require("jest-environment-node");
 const { v4: uuid } = require("uuid");
-const { execSync } = require("child_process");
-const { resolve } = require("path");
+const { execSync } = require("node:child_process");
+const { resolve } = require("node:path");
 const { Client } = require("pg");
 
 const prismaCli = "../node_modules/.bin/prisma";

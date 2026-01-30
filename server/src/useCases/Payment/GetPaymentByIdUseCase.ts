@@ -1,8 +1,8 @@
-import { prismaClient } from "../../database/prismaClient";
+import { prisma } from "../../database/prismaClient";
 
 export class GetPaymentByIdUseCase {
 	async handle({ userId }: { userId: string }) {
-		const payment = await prismaClient.client.findUnique({
+		const payment = await prisma.client.findUnique({
 			where: {
 				id: userId,
 			},

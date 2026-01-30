@@ -1,15 +1,9 @@
-import { NextFunction, type Request, type Response } from "express";
+import type { Request, Response } from "express";
 
-import { prismaClient } from "../../database/prismaClient";
-import { HttpError } from "../../models/http-error";
 import { GetEmployeeByIdUseCase } from "../../useCases/Employee/GetEmployeeByIdUSeCase";
 
 export class GetEmployeeByIdController {
-	async handle(
-		request: Request,
-		response: Response,
-		// next: NextFunction,
-	) {
+	async handle(request: Request, response: Response) {
 		if (request.method !== "GET") {
 			return response.status(405).json("Method not allowed");
 		}
@@ -19,10 +13,13 @@ export class GetEmployeeByIdController {
 		const getEmployeeByIdUseCase = new GetEmployeeByIdUseCase();
 
 		try {
-			const selectedEmployee = await getEmployeeByIdUseCase.handle({ id });
+			const selectedEmployee = await getEmployeeByIdUseCase.handle({
+				id: String(id),
+			});
 
 			return response.status(201).json(selectedEmployee);
 		} catch (e) {
+			console.error(e);
 			return response.status(500).json("Fail to Find Employee by Id");
 		}
 	}

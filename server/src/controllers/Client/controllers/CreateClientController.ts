@@ -1,9 +1,6 @@
-import { Roles } from "@prisma/client";
-import { hash } from "bcryptjs";
 import type { NextFunction, Request, Response } from "express";
 import { validationResult } from "express-validator";
 
-import { prismaClient } from "../../../database/prismaClient";
 import { HttpError } from "../../../models/http-error";
 import { CreateClientUseCase } from "../../../useCases/Client/CreateClientUseCase";
 
@@ -47,6 +44,7 @@ export class CreateClientController {
 
 			return response.status(201).json(newClient);
 		} catch (e) {
+			console.error(e);
 			return response.status(500).json("Fail to create Client");
 		}
 		// let existingUser

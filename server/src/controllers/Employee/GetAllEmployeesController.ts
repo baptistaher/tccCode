@@ -1,7 +1,5 @@
-import { Employee, prisma, Roles, Status } from "@prisma/client";
-
 import type { NextFunction, Request, Response } from "express";
-import { prismaClient } from "../../database/prismaClient";
+
 import { HttpError } from "../../models/http-error";
 import { GetAllEmployeesUseCase } from "../../useCases/Employee/GetAllEmployeeUseCase";
 
@@ -19,6 +17,7 @@ export class GetAllEmployeesController {
 
 			return response.status(200).json(listEmployee);
 		} catch (e) {
+			console.error(e);
 			return response.status(400).json("Fail to get all employee");
 		}
 

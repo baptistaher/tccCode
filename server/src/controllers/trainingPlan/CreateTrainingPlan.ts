@@ -28,6 +28,7 @@ export class CreateTrainingPlanController {
 
 			return response.status(201).json(trainingplan);
 		} catch (err) {
+			console.log(err);
 			return response.status(400).json("Fail to Create TrainingPlan");
 		}
 	}

@@ -1,34 +1,29 @@
-import type { NextFunction, Request, Response } from "express";
-import { prismaClient } from "../../database/prismaClient";
-import { HttpError } from "../../models/http-error";
+import type { Request, Response } from "express";
+import { prisma } from "../../database/prismaClient";
 
 export class UpdateEmployeePhoneNumBerController {
-	async handle(
-		request: Request,
-		response: Response,
-		next: NextFunction,
-	): Promise<Response> {
+	async handle(request: Request, response: Response): Promise<Response> {
 		const { phone } = request.body;
 		const employeeId = request.params.id;
 
-		let employee;
-		try {
-			employee = await prismaClient.user.findUnique({
-				where: {
-					id: employeeId,
-				},
-			});
-		} catch (err) {
-			// const error = new HttpError("Something went wrong, could not get employee by id ", 500);
-			// return next(error);
+		// let employee;
+		// try {
+		const employee = await prisma.user.findUnique({
+			where: {
+				id: Array.isArray(employeeId) ? employeeId[0] : employeeId,
+			},
+		});
+		// } catch (err) {
+		//   // const error = new HttpError("Something went wrong, could not get employee by id ", 500);
+		//   // return next(error);
 
-			return response
-				.status(500)
-				.json("Something went wrong,could not get employee by id");
-		}
+		//   return response
+		//     .status(500)
+		//     .json("Something went wrong,could not get employee by id");
+		// }
 
 		try {
-			const updatedPhone = await prismaClient.user.update({
+			const updatedPhone = await prisma.user.update({
 				where: {
 					id: employee?.id,
 				},
@@ -38,6 +33,7 @@ export class UpdateEmployeePhoneNumBerController {
 			});
 			return response.status(200).json(updatedPhone);
 		} catch (err) {
+			console.log(err);
 			// const error = new HttpError("Something went wrong, could not update place.", 500);
 			// return next(error);
 			return response

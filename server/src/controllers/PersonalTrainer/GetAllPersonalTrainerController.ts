@@ -1,5 +1,4 @@
 import type { Request, Response } from "express";
-import { HttpError } from "../../models/http-error";
 import { GetAllPersonalTrainerUseCase } from "../../useCases/PersonalTrainer/GetAllPersonalTrainerUseCase";
 
 export class GetAllPersonalTrainersController {
@@ -15,6 +14,7 @@ export class GetAllPersonalTrainersController {
 
 			return response.status(200).json(listPersonalTrainers);
 		} catch (e) {
+			console.log(e);
 			return response.status(500).json("couldn't get all PersonalTrainers");
 		}
 	}

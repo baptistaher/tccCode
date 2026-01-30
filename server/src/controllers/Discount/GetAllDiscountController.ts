@@ -1,14 +1,8 @@
-import type { NextFunction, Request, Response } from "express";
-import { prismaClient } from "../../database/prismaClient";
-import { HttpError } from "../../models/http-error";
+import type { Request, Response } from "express";
 import { GetAllDiscountUseCase } from "../../useCases/Discount/GetAllDiscountUSeCase";
 
 export class GetAllDiscountsController {
-	async handle(
-		request: Request,
-		response: Response,
-		next: NextFunction,
-	): Promise<Response> {
+	async handle(request: Request, response: Response): Promise<Response> {
 		if (request.method !== "GET") {
 			// const error = new HttpError('Method not allowed', 405)
 			// return next(error)
@@ -23,6 +17,7 @@ export class GetAllDiscountsController {
 
 			return response.status(200).json(listDiscount);
 		} catch (e) {
+			console.error(e);
 			return response.status(500).json("couldn't gel all Discount");
 
 			// const error = new HttpError(

@@ -1,9 +1,9 @@
-import { prismaClient } from "../../database/prismaClient";
+import { prisma } from "../../database/prismaClient";
 import type { IGetClientByIdDTO } from "../../repositories/dto/Client/IGetClientByIdDTO";
 
 export class GetClientByIdUseCase {
 	async handle({ id }: IGetClientByIdDTO) {
-		const clientExist = await prismaClient.client.findUnique({
+		const clientExist = await prisma.client.findUnique({
 			where: {
 				id,
 			},
