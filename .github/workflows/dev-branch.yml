@@ -7,6 +7,7 @@ on:
 
 jobs:
   server-format-check:
+    name: Format Check
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -15,8 +16,8 @@ jobs:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
-          node-version: 24
+          node-version: 22
           cache: 'npm'
-          cache-dependency-path: server/package-lock.json
-      - run: npm install
+          # cache-dependency-path: server/package-lock.json
+      - run: npm ci
       - run: npm run format:write
