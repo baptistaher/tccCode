@@ -1,7 +1,5 @@
 import express from "express";
-import { RefreshTokenUserController } from "./../../controllers/token/RefreshTokenUserController";
 import { GetUserByIdController } from "../../controllers/User/GetUserbyIdController";
-import { LoginController } from "../../controllers/User/LoginController";
 
 const userRouter = express.Router();
 

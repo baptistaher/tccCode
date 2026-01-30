@@ -1,13 +1,8 @@
-import type { NextFunction, Request, Response } from "express";
-import { prismaClient } from "../../database/prismaClient";
-import { HttpError } from "../../models/http-error";
+import type { Request, Response } from "express";
+import { prisma } from "../../database/prismaClient";
 
 export class GetAllEmailUserController {
-	async handle(
-		request: Request,
-		response: Response,
-		next: NextFunction,
-	): Promise<Response> {
+	async handle(request: Request, response: Response): Promise<Response> {
 		//  allEmail;
 
 		if (request.method !== "GET") {
@@ -16,7 +11,7 @@ export class GetAllEmailUserController {
 		}
 
 		try {
-			const allEmail = await prismaClient.user.findMany({
+			const allEmail = await prisma.user.findMany({
 				select: {
 					email: true,
 				},
@@ -24,6 +19,7 @@ export class GetAllEmailUserController {
 
 			return response.status(200).json(allEmail);
 		} catch (err) {
+			console.log(err);
 			// const error = new HttpError(
 			//   "Couldn't get all User Email",
 			//   404,

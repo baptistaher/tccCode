@@ -1,34 +1,33 @@
 import type { NextFunction, Request, Response } from "express";
-import { prismaClient } from "../../database/prismaClient";
+import { prisma } from "../../database/prismaClient";
 import { HttpError } from "../../models/http-error";
 
 // not done
 
 export class UpdatePersonalTrainerInfoControllers {
-	async handle(request: Request, response: Response, next: NextFunction) {
-		const { name, email, phone } = request.body;
+	async handle(request: Request, _: Response, next: NextFunction) {
 		const personalTrainerId = request.params.id;
 
-		let personalTrainer;
-
 		try {
-			personalTrainer = await prismaClient.personalTrainer.findUnique({
+			const personalTrainer = await prisma.personalTrainer.findUnique({
 				where: {
-					id: personalTrainerId,
+					id: Array.isArray(personalTrainerId)
+						? personalTrainerId[0]
+						: personalTrainerId,
 				},
 			});
+			if (!personalTrainer) {
+				const error = new HttpError(
+					"Could not find PersonalTrainer for the provided id.",
+					404,
+				);
+				return next(error);
+			}
+			return personalTrainer;
 		} catch (e) {
+			console.error(e);
 			const error = new HttpError(
 				"Something went wrong, couldn't  get PersonalTrainer",
-				500,
-			);
-			return next(error);
-		}
-
-		try {
-		} catch (e) {
-			const error = new HttpError(
-				"Something went wrong, couldn't find User Id",
 				500,
 			);
 			return next(error);

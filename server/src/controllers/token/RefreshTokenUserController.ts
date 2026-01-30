@@ -11,6 +11,7 @@ export class RefreshTokenUserController {
 			const token = await refreshTokenUse.handle(refreshToken);
 			return response.status(200).json({ token });
 		} catch (e) {
+			console.log(e);
 			return response.status(401).json("Problem with Refresh token");
 		}
 	}

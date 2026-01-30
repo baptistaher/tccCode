@@ -1,15 +1,9 @@
-import type { NextFunction, Request, Response } from "express";
+import type { Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { prismaClient } from "../../database/prismaClient";
-import { HttpError } from "../../models/http-error";
 import { CreateDiscountUseCase } from "../../useCases/Discount/CreateDiscountUseCase";
 
 export class CreateDiscountController {
-	async handle(
-		request: Request,
-		response: Response,
-		next: NextFunction,
-	): Promise<Response> {
+	async handle(request: Request, response: Response): Promise<Response> {
 		if (request.method !== "POST") {
 			// const error = new HttpError('Method not allowed', 405)
 			// return next(error)
@@ -37,6 +31,7 @@ export class CreateDiscountController {
 
 			return response.status(201).json(newDiscount);
 		} catch (e) {
+			console.error(e);
 			return response.status(500).json("Couldn't register the Discount");
 		}
 

@@ -17,6 +17,7 @@ export class GetAllClientController {
 
 			return response.status(200).json(listClients);
 		} catch (e) {
+			console.error(e);
 			return response.status(500).json("Couldn't get all Clients");
 		}
 

@@ -11,11 +11,14 @@ export class GetPaymentByIdController {
 
 		const getPaymentByIdUseCase = new GetPaymentByIdUseCase();
 		try {
-			const selectPayment = await getPaymentByIdUseCase.handle({ userId: id });
+			const selectPayment = await getPaymentByIdUseCase.handle({
+				userId: String(id),
+			});
 
 			return response.status(201).json(selectPayment);
 		} catch (e) {
-			return response.status(500).json({ Error: "FAil to get Payment" });
+			console.error(e);
+			return response.status(500).json({ Error: "Failed to get Payment" });
 		}
 	}
 }

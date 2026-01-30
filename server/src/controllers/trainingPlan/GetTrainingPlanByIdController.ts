@@ -12,7 +12,9 @@ export class GetTrainingPlanByIdController {
 		const getTrainingPlanByUse = new GetTrainingPlanByIdUseCase();
 
 		try {
-			const trainingPlanInfo = await getTrainingPlanByUse.handle({ id });
+			const trainingPlanInfo = await getTrainingPlanByUse.handle({
+				id: String(id),
+			});
 
 			if (Object.keys(trainingPlanInfo).length === 0) {
 				return response.status(500).json("Training don't Exist");
@@ -20,6 +22,7 @@ export class GetTrainingPlanByIdController {
 
 			return response.status(200).json(trainingPlanInfo);
 		} catch (error) {
+			console.log(error);
 			return response.status(500).json("Fail to Find Training Plan by id");
 		}
 	}

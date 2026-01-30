@@ -1,8 +1,6 @@
 // import { GetPersonalTrainerByIdController } from './GetPersonalTrainerByIdController';
-import { NextFunction, type Request, type Response } from "express";
+import type { Request, Response } from "express";
 
-import { prismaClient } from "../../database/prismaClient";
-import { HttpError } from "../../models/http-error";
 import { GetPersonalTrainerByIdUseCase } from "../../useCases/PersonalTrainer/GetPersonalTrainerByIdUseCase";
 
 export class GetPersonalTrainerByIdController {
@@ -16,10 +14,13 @@ export class GetPersonalTrainerByIdController {
 		const getPersonalTrainerByIdUseCase = new GetPersonalTrainerByIdUseCase();
 		try {
 			const selectedPersonalTrainer =
-				await getPersonalTrainerByIdUseCase.handle({ id });
+				await getPersonalTrainerByIdUseCase.handle({
+					id: Array.isArray(id) ? id[0] : id,
+				});
 
 			return response.status(200).json(selectedPersonalTrainer);
 		} catch (error) {
+			console.error(error);
 			return response.status(500).json("Fail to Find Personal Trainer by Id");
 		}
 	}

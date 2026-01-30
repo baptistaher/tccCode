@@ -1,7 +1,5 @@
-import { NextFunction, type Request, type Response } from "express";
+import type { Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { prismaClient } from "../../database/prismaClient";
-import { HttpError } from "../../models/http-error";
 import { CreateManagerUseCase } from "../../useCases/Manager/CreateManagerUseCase";
 
 export class CreateManagerController {
@@ -42,6 +40,7 @@ export class CreateManagerController {
 
 			// return response.status(201).json(manager)
 		} catch (e) {
+			console.error(e);
 			return response.status(500).json("couldn't register the Manager");
 			// const error = new HttpError("Fail to add Manager", 500)
 

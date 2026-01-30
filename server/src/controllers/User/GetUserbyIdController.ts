@@ -13,7 +13,7 @@ export class GetUserByIdController {
 
 		try {
 			const getUserInfo = await getUserByIdUseCase.handle({
-				id,
+				id: String(id),
 			});
 
 			if (Object.keys(getUserInfo).length === 0) {
@@ -22,6 +22,7 @@ export class GetUserByIdController {
 
 			return response.status(200).json(getUserInfo);
 		} catch (e) {
+			console.error(e);
 			return response.status(500).json("Fail to get User info");
 		}
 	}

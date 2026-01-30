@@ -1,6 +1,5 @@
 import { compare } from "bcryptjs";
-import { prismaClient } from "../../database/prismaClient";
-import { HttpError } from "../../models/http-error";
+import { prisma } from "../../database/prismaClient";
 import { GenerateRefreshTokenProvider } from "../../provider/GenerateRefreshTokenProvider";
 import { GenerateTokenProvider } from "../../provider/GenerateTokenProvider";
 
@@ -12,16 +11,17 @@ interface IRequest {
 export class LoginUseCase {
 	async execute({ email, password }: IRequest) {
 		// not finish
-		let existingUser;
-		try {
-			existingUser = await prismaClient.user.findUnique({
-				where: {
-					email,
-				},
-			});
-		} catch (e) {
-			throw new Error("Logging in failed please try again later. ");
-		}
+		// let existingUser;
+		// try {
+		const existingUser = await prisma.user.findUnique({
+			where: {
+				email,
+			},
+		});
+		// } catch (e) {
+		//   console.error(e);
+		//   throw new Error("Logging in failed please try again later. ");
+		// }
 
 		// console.log(existingUser)
 
@@ -60,17 +60,17 @@ export class LoginUseCase {
 			throw new Error("Invalid password, could not log you in.");
 		}
 
-		let token;
-		let refreshToken;
+		// const token: unknown;
+		// let refreshToken: unknown;
 
 		const generateTokenProvider = new GenerateTokenProvider();
 
 		const generateRefreshTokenProvider = new GenerateRefreshTokenProvider();
 
 		// try {
-		token = await generateTokenProvider.execute(existingUser.id);
+		const token = await generateTokenProvider.execute(existingUser.id);
 
-		await prismaClient.refreshToken.deleteMany({
+		await prisma.refreshToken.deleteMany({
 			where: {
 				userId: existingUser.id,
 			},
@@ -84,7 +84,9 @@ export class LoginUseCase {
 		// }
 
 		// try {
-		refreshToken = await generateRefreshTokenProvider.execute(existingUser.id);
+		const refreshToken = await generateRefreshTokenProvider.execute(
+			existingUser.id,
+		);
 
 		return { token, refreshToken, userId: existingUser.id };
 	}

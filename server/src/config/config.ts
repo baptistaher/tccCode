@@ -1,6 +1,5 @@
+import { join } from "node:path";
 import dotenv from "dotenv";
-
-import { join } from "path";
 
 import { object, string } from "zod";
 
