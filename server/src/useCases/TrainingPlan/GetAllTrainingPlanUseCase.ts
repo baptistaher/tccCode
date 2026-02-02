@@ -1,8 +1,8 @@
-import { prismaClient } from "../../database/prismaClient";
+import { prisma } from "../../database/prismaClient";
 
 export class GetAllTrainingPlansUseCase {
 	async handle() {
-		const listTrainingPlans = await prismaClient.training_plan.findMany({
+		const listTrainingPlans = await prisma.training_plan.findMany({
 			select: {
 				id: true,
 				name: true,

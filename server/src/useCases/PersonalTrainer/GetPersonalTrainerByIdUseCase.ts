@@ -1,9 +1,9 @@
-import { prismaClient } from "../../database/prismaClient";
+import { prisma } from "../../database/prismaClient";
 import type { IGetPersonalTrainerByIdDTO } from "./../../repositories/dto/PersonalTrainer/IGetPersonalTrainerByIdDTO";
 
 export class GetPersonalTrainerByIdUseCase {
 	async handle({ id }: IGetPersonalTrainerByIdDTO) {
-		const personalTrainerData = await prismaClient.personalTrainer.findUnique({
+		const personalTrainerData = await prisma.personalTrainer.findUnique({
 			where: {
 				id,
 			},

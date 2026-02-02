@@ -1,30 +1,29 @@
 import { PrismaClient, Roles } from "@prisma/client";
-import { prismaClient } from "../src/database/prismaClient";
+import { prisma } from "../src/database/prismaClient";
 import { clients } from "./dataTest/client";
 
-const prisma = new PrismaClient();
 
 async function runSeed() {
-	const listTrainingPLans = await prismaClient.training_plan.findMany({
+	const listTrainingPLans = await prisma.training_plan.findMany({
 		select: {
 			id: true,
 		},
 	});
 
-	const listDiscounts = await prismaClient.discount.findMany({
+	const listDiscounts = await prisma.discount.findMany({
 		select: {
 			id: true,
 		},
 	});
 
-	const listPersonalTrainer = await prismaClient.personalTrainer.findMany({
+	const listPersonalTrainer = await prisma.personalTrainer.findMany({
 		select: {
 			id: true,
 		},
 	});
 
 	clients.map(async (client) => {
-		await prismaClient.user.create({
+		await prisma.user.create({
 			data: {
 				name: client.name,
 				email: client.email,

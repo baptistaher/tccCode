@@ -1,8 +1,8 @@
-import { prismaClient } from "../../database/prismaClient";
+import { prisma } from "../../database/prismaClient";
 
 export class GetAllDiscountUseCase {
 	async handle() {
-		const listDiscount = await prismaClient.discount.findMany({
+		const listDiscount = await prisma.discount.findMany({
 			select: {
 				id: true,
 				name: true,

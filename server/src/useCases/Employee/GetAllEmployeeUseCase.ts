@@ -1,8 +1,8 @@
-import { prismaClient } from "../../database/prismaClient";
+import { prisma } from "../../database/prismaClient";
 
 export class GetAllEmployeesUseCase {
 	async handle() {
-		const data = await prismaClient.employee.findMany({
+		const data = await prisma.employee.findMany({
 			select: {
 				id: true,
 				status: true,
