@@ -3,8 +3,14 @@ import express from "express";
 import "reflect-metadata";
 import { router } from "./routes";
 import { authRouter } from "./routes/auth";
+import logger from "./logger/logger";
 
 const app = express();
+app.use(logger);
+
+
+
+
 
 app.use(express.json());
 app.use(bodyParser.json());
@@ -30,5 +36,7 @@ app.use("/api", router);
 //   const error = new HttpError("Not found", 404);
 //   throw error;
 // });
+
+
 
 export { app };
