@@ -43,6 +43,9 @@
 			"path": "/usr/bin/zsh",
 			"icon": "terminal-linux"
 		}
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
 	}
 
 }

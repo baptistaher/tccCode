@@ -1,11 +1,26 @@
 {
 	"compilerOptions": {
+		"target": "esnext",
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+
 		"sourceMap": true,
 		"outDir": "dist/js",
 		"strict": true,
+
 		"lib": ["esnext"],
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"baseUrl": ".",
+		"paths": {
+			"src/*": ["src/*"]
+		},
+
+		"types": ["node", "jest"]
 	},
+
+  "include": ["src/**/*.ts"],
+	"exclude": ["node_modules", "dist", "coverage"],
+
 	"typedocOptions": {
 		"entryPoints": ["src/server.ts"],
 		"out": "docs"

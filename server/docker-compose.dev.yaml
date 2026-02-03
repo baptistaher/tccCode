@@ -1,13 +1,16 @@
 services:
 
   api:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
     command: ./.docker/entrypoint.sh
     container_name: nogain-dev-api
     ports:
       - '5000:5000'
     volumes:
-      - ..:/home/node/app
+      - .:/home/node/app
+      
     extra_hosts:
       - "host.docker.internal:host-gateway"
 
