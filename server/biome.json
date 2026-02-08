@@ -7,7 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"includes": ["Dockerfile"]
+		"includes": ["**"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -32,7 +32,8 @@
 			"quoteStyle": "double",
 			"quoteProperties": "asNeeded",
 			"semicolons": "always",
-			"trailingCommas": "all"
+			"trailingCommas": "all",
+			"importOrder": ["express"]
 		}
 	},
 

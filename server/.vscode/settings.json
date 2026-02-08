@@ -27,15 +27,17 @@
 		"titleBar.inactiveForeground": "#e7e7e799"
 	},
 	"peacock.remoteColor": "#215732",
-	"javascript.format.insertSpaceAfterConstructor": true,
-	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
-	"javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
+	// "javascript.format.insertSpaceAfterConstructor": true,
+	// "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+	// "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": true,
 	"peacock.color": "#215732",
 	"editor.formatOnSave": true,
+	
 	"editor.defaultFormatter": "biomejs.biome",
 	"editor.codeActionsOnSave": {
 		"source.organizeImports.biome": "always",
-		"source.fixAll.biome": "always"
+		"source.fixAll.biome": "always",
+		"source.format.biome": "always"
 	},
 	"terminal.integrated.defaultProfile.linux": "zsh",
 	"terminal.integrated.profiles.linux":{
